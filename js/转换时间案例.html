@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let s1 = +prompt('输入总的秒数')
+        let fn = function (s1) {
+            let d = parseInt(s1 / 60 / 60 / 24)
+            let h = parseInt(s1 / 60 / 60 % 24)
+            let m = parseInt(s1 / 60 % 60)
+            let s = parseInt(s1 % 60)
+            h = h < 10 ? '0' + h : h
+            m = m < 10 ? '0' + m : m
+            s = s < 10 ? '0' + s : s
+            // console.log(h, m, s)
+            return `转换完毕之后是${h}小时${m}分${s}秒`
+        }
+        let str =fn(s1)
+        document.write(str)
+    </script>
+</body>
+
+</html>

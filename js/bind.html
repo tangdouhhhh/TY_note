@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>点击获取短信验证码</button>
+</body>
+</html>
+<script>
+    var btn = document.querySelector('button')
+    btn.onclick= function(){
+        this.disabled = true
+        // var that = this
+        setTimeout(function(){
+            // that.disabled = false
+            this.disabled = false
+        }.bind(btn), 3000);
+    }
+</script>

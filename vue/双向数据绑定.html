@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="inp">
+    <p id="context"></p>
+    <script>
+        let obj = {};
+        // 参数，1.需要监听的，2.传的它的key,3.传的是一个对象
+        Object.defineProperty(obj, 'binding', {
+            get() {
+                return obj;
+            },
+            set(newValue) {
+                document.getElementById('inp').value = newValue;
+                document.getElementById('context').innerHTML = newValue
+            }
+        });
+        document.getElementById('inp').onkeyup = (e)=>{
+            obj.binding = e.target.value;
+        }
+        function demo1 (){
+            const a = 1;
+            function demo2(){
+                console.log(a)
+            }
+            return demo2
+        }
+        var box = demo1()
+        box()
+    </script>
+</body>
+
+</html>

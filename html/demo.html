@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<body>
+    <div id="root">
+        姓：<input type="text" v-model="firstName">
+        名：<input type="text" v-model="lastName">
+        全名：<span>{{fullName}}</span>
+        <button @click="update()">点击触发</button>
+    </div>
+</body>
+<script>
+    const vm = new Vue({
+        el:'#root',
+        data() {
+            return {
+                firstName:'唐',
+                lastName:'三',
+                fullName:''
+            }
+        },
+        computed:{
+            fullName:{
+                get(){
+                    const fullName =  this.firstName + '-' + this.lastName
+                    // console.log(fullName);
+                    return fullName
+                },
+                set(value){
+                    // const arr = this.fullName.split('-')
+                    const arr = value.split('-')
+                    this.firstName=arr[0]
+                    this.lastName=arr[1]
+                    console.log(111);
+                }
+            }
+        },
+        methods: {
+            
+        },
+    })
+</script>
+</html>

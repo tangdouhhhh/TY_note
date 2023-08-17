@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="bbox">
+        111111111111111111111
+        <div class="float">
+            123
+        </div>
+        <div class="box">
+            123
+        </div>
+        <div class="clear">
+
+        </div>
+    </div>
+    
+    
+</body>
+</html>
+<style>
+    /* 3 */
+    .clear{
+        clear: both;
+    }
+    .bbox{
+        background-color: green;
+        /* 1 */
+        /* float: left; */
+    }
+    /* 2 */
+    /* .bbox::after{
+        content:'';
+        display: block;
+        clear: both;
+    } */
+    .float{
+        background-color: orange;
+        width: 300px;
+        height: 200px;
+        float: left;
+    }
+    .box{
+        background-color: pink;
+        width: 400px;
+        height: 400px;
+        float: left;
+    }
+    
+</style>

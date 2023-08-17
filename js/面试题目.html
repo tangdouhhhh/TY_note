@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 例如
+const spaceTreeList = [
+    {
+        id: "1",
+        name: "Space 1",
+        parentId: "",
+        subSpaces: [
+            {
+                id: "2",
+                name: "Space 1.1",
+                parentId: "1",
+                selected: true,
+                subSpaces: [
+                    {
+                        id: "3",
+                        name: "Space 1.1.1",
+                        parentId: "2",
+                        selected: true,
+                        subSpaces: [
+                            {
+                                id: "6",
+                                name: "Space 1.1.3.2.1",
+                                parentId: "1",
+                                selected: true,
+                                subSpaces: [
+                                    {
+                                        id: "8",
+                                        name: "Space 1.1.1",
+                                        parentId: "2",
+                                        selected: true,
+                                        subSpaces: [],
+                                    },
+                                ],
+                            },
+                            {
+                                id: "7",
+                                name: "Space 1.1.3.4.1",
+                                parentId: "1",
+                                selected: false,
+                                subSpaces: [
+                                    {
+                                        id: "9",
+                                        name: "Space 1.1.1",
+                                        parentId: "2",
+                                        selected: false,
+                                        subSpaces: [],
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        id: "4",
+        name: "Space 2",
+        parentId: "",
+        subSpaces: [],
+        selected: false,
+    },
+];
+// 1. 完成下面方法，要求传入参数为任意的Space数组和一个id，返回仅包含从一级Space到目标Space的路径的数组
+// 比如：以上面的 spaceTreeList 为例，当id为 ‘7’时，应返回 [{id: "1",...},{id: "2",...},{id: "3",...},{id: "7",...}]
+function getPaths(tree, id) {
+    for (let space of tree) {
+        if (space.id === id) {
+            return [space];
+        } else if (space.subSpaces && space.subSpaces.length > 0) {
+            const foundPath = getPaths(space.subSpaces, id);
+            if (foundPath.length > 0) {
+                return [space, ...foundPath];
+            }
+        }
+    }
+    return [];
+}
+// export
+// 2. 写一个方法，要求传入参数为任意的Space数组和一个id，要求把在 从一级Space到目标Space的路径 上的所有Space的selected都设为true,其他空间selected都设为false
+// 比如：以上面的 spaceTreeList 为例，当id为 ‘7’时，那么id为 1,2,3,7的Space的selected应该为true,其他Space的Selected都应为false
+console.log(getPaths(spaceTreeList, "7"));
+</script>
+</html>

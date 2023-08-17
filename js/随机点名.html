@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    随机点名：<span></span> <br>
+    <button class="begin">开始</button>
+    <button class="end">结束</button>
+</body>
+<script>
+    const arr = ['马超', '黄忠', '赵云', '关羽', '张飞']
+    let timer = 0
+    let span = document.querySelector('span')
+    let begin = document.querySelector('.begin')
+    let end = document.querySelector('.end')
+    begin.addEventListener('click',function(){
+       timer =  setInterval(() => {
+        let num = Math.floor(Math.random() * arr.length)
+            span.innerHTML = arr[num]
+        }, 200);
+    })
+    end.addEventListener('click',function(){
+        clearInterval(timer)
+    })
+</script>
+
+</html>
