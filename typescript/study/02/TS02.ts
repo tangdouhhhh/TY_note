@@ -44,9 +44,9 @@ interface IPer {
 const ik: so & IPer = {
     name: 'ty',
     age: 11,
-    sax: 'a'
+    sax: 'a' 
 }
 
-// 4.类型断言
+// 4. 进行类型断言
 
 
