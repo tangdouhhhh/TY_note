@@ -27,7 +27,7 @@ interface IKun extends IPerson {
   }
   
 const ikun1: IKun = {
-    kouhao: "你干嘛, 哎呦",
+    kouhao: "你干嘛",
     name: "kobe",
     age: 30
   }
