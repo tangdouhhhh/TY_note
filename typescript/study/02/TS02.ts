@@ -20,17 +20,17 @@ const point: Point = {
 interface IPerson {
     name: string
     age: number
-  }
-  
+}
+
 interface IKun extends IPerson {
     kouhao: string
-  }
-  
+}
+
 const ikun1: IKun = {
     kouhao: "你干嘛",
     name: "kobe",
     age: 30
-  }
+}
 
 
 // 3.交叉类型
@@ -44,9 +44,80 @@ interface IPer {
 const ik: so & IPer = {
     name: 'ty',
     age: 11,
-    sax: 'a' 
+    sax: 'a'
 }
 
 // 4.类型断言
+const myEl = document.getElementById("my-img")
+const myEll = document.getElementById("my-img") as HTMLImageElement
 
+
+// 5.非空类型断言(还是有安全隐患的，慎用)
+// 因为mes可能为undefined,当确保mes一定有值 可以用非空类型断言
+function print(mes?: string) {
+    console.log(mes!.toUpperCase());
+}
+
+//  6.字面量类型
+const mee = "heoo"
+let mes: "hello world" = "hello world"  //没太大意义
+// 结合联合类型使用
+type MethodType = "get" | "post"
+function request(url: string, method: MethodType) { }
+request("http://coder.com/api", "post")
+
+
+// 7.类型缩小
+// typeof
+function print(id: number | string) {
+    if (typeof id === "string") { }
+    else { }
+}
+// ===
+type Direction = "left" | "right"
+function dir(direction: Direction) {
+    if (direction === "left") { }
+}
+// instanceof
+function printDate(date: string | Date) {
+    if (date instanceof Date) {
+        console.log(date.getTime())
+    } else { }
+}
+// in
+interface ISwim {
+    swim: () => void
+}
+interface IRun {
+    run: () => void
+}
+function move(animal: ISwim | IRun) {
+    // animal.swim()  //err
+    if("swim" in animal){
+        animal.swim()
+    }
+}
+const fish: ISwim ={
+    swim() { },
+}
+move(fish)
+
+
+// 8.函数类型
+// 函数表达式
+type BarType = (num1:  number)=> number
+function fn(params: number) {
+    return 12
+}
+// 函数调用签名
+interface IB {
+    name: string
+    (num1:number): number
+}
+const bar: IB = (num1: number):number =>{
+    return 12
+}
+bar.name ="a"
+bar(12)
+export {}
 
