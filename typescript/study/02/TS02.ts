@@ -119,5 +119,20 @@ const bar: IB = (num1: number):number =>{
 }
 bar.name ="a"
 bar(12)
+
+
+// 9.重载签名
+// 只能将两个数字/两个字符串相加
+function add(arg1: number, arg2: number): number
+function add(arg1: string, arg2: string): string
+function add(arg1: any, arg2: any): any {
+    return arg1 + arg2 
+}
+add(10, 20)
+add("aaa","bbb")
+
+
+// 10.类
+
 export {}
 
