@@ -54,7 +54,7 @@ const myEll = document.getElementById("my-img") as HTMLImageElement
 
 // 5.非空类型断言(还是有安全隐患的，慎用)
 // 因为mes可能为undefined,当确保mes一定有值 可以用非空类型断言
-function print(mes?: string) {
+function print1(mes?: string) {
     console.log(mes!.toUpperCase());
 }
 
