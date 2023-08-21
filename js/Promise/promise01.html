@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const myFun01 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('请求接口1')
+        }, 2000);
+    })
+    const myFun03 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('请求接口3')
+        }, 2000);
+    })
+    const myFun04 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('请求接口4')
+        }, 1000);
+    })
+    const myFun02 = new Promise((resolve, reject) => {
+        // 模拟接口2异步请求数据
+        setTimeout(() => {
+            resolve('请求接口2')
+        }, 1000);
+    })
+    const myFun05 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('请求接口5')
+        }, 1000);
+    })
+    const promiseRace = Promise.race([myFun01, myFun02])
+    promiseRace.then((res) => {
+        console.log(res);
+        if (res === "请求接口1") {
+            myFun03.then((res) => {
+                console.log(res);
+                myFun04.then((res) => {
+                    console.log(res);
+                })
+            })
+        } else {
+            const promiseAll = Promise.race([myFun03, myFun05])
+            promiseAll.then((value) => {
+                if (value === '请求接口3') {
+                    myFun04.then((res) => {
+                        console.log(res);
+                    })
+                }else {
+                    console.log(value);
+                }
+            })
+        }
+    })
+
+</script>
+
+</html>

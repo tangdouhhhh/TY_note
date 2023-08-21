@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 模糊的 -->
+    <!-- <img src="images/apple50.jpg" alt=""> -->
+    <!-- 我们采取2倍图 -->
+    <!-- <img src="images/apple100.jpg" alt=""> -->
+
+    <!-- 流式布局 -->
+    <section>
+        <div></div>
+        <div></div>
+    </section>
+</body>
+<style lang="less">
+    /* 媒体查询 */
+    /*  screen 还有 and 必须带上不能省略的 */
+
+    @media screen and (min-width: 320px) {
+        html {
+            font-size: 21.33px;
+        }
+    }
+
+    @media screen and (min-width: 750px) {
+        html {
+            font-size: 50px;
+        }
+    }
+
+    div {
+        width: 2rem;
+        height: 2rem;
+        background-color: pink;
+    }
+
+    /* 1. 首先我们选一套标准尺寸 750为准 
+        2. 我们用屏幕尺寸 除以 我们划分的份数 得到了 html 里面的文字大小 但是我们知道不同屏幕下得到的文字大小是不一样的 */
+    /* 3. 页面元素的rem值 =  页面元素在 750像素的下px值 / html 里面的文字大小 */
+    /* less */
+    a {
+        &:hover {}
+    }
+
+    /*  */
+    section {
+        margin: 0 auto;
+    }
+
+    section div {
+        height: 400px;
+        float: left;
+        min-width: 200px;
+        max-width: 600px;
+    }
+
+    section div:nth-child(1) {
+        width: 50%;
+        background-color: pink;
+    }
+
+    section div:nth-child(2) {
+        width: 50%;
+        background-color: purple;
+    }
+
+    img:nth-child(2) {
+        width: 50px;
+        height: 50px;
+    }
+</style>
+
+</html>
