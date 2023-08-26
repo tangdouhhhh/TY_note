@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        class Person {
+            // constructor: 设置初始状态和属性
+            constructor(name,age){
+                console.log(this);  //类的实例对象
+                this.name = name
+                this.age = age
+            }
+            speak(){
+                console.log(this); //类的实例对象
+                console.log(`我叫${this.name},年龄是${this.age}`);
+            }
+        }
+        const c = new Person('1','2')
+        c.speak()
+
+        class Student extends Person {
+            constructor(name,age,grade){
+                super(name,age)
+                this.grade = grade
+                this.school = '尚归古'
+            }
+            // 重写父类继承方法
+            speak(){
+                console.log(`我叫${this.name}，我年龄是${this.age},我读的是${this.grade}年级`);
+                this.study()
+            }
+            study(){
+                console.log('ty');
+            }
+        }
+        const c2 = new Student('2','2','2')
+        c2.speak()
+    </script>
+</body>
+</html>

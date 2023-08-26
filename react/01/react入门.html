@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../01/js/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script type="text/javascript" src="../01/js/react-dom.development.js"></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type="text/javascript" src="../01/js/babel.min.js"></script>
+
+    <!-- 1.准备好一个容器 -->
+    <div id="test"></div>
+
+    <div id="demo"></div>
+
+    <script type="text/babel">
+        // 1.创建虚拟DOM
+        const VDOM = (<h1>hello</h1>)
+        // 2.渲染虚拟DOM到页面
+        ReactDOM.render(VDOM, document.getElementById('test'))
+
+        // 比较虚拟DOM 与 真实DOM: 
+        const TDOM = document.getElementById('demo')
+        console.log('虚拟DOM', VDOM);
+        console.log('真实DOM', TDOM);
+        // debugger;
+    </script>
+    <!--
+        一.
+        //使用js创建虚拟DOM
+        <script type="text/javascript">
+        // 创建虚拟DOM
+        const VDOM1 = React.createElement('span',{ id:'HR'},'Hello,React')
+        ReactDOM.render(VDOM1,document.getElementById('test'))
+    </script>
+     -->
+
+</body>
+
+</html>
