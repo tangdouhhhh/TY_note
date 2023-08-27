@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- 引入react核心库 -->
+<script type="text/javascript" src="../01/js/react.development.js"></script>
+<!-- 引入react-dom，用于支持react操作DOM -->
+<script type="text/javascript" src="../01/js/react-dom.development.js"></script>
+<!-- 引入babel，用于将jsx转为js -->
+<script type="text/javascript" src="../01/js/babel.min.js"></script>
+
+<div id="demo">test</div>
+<!--babel里面是严格模式 this为undefind-->
+<script type="text/babel">
+    class Weather extends React.Component {
+        // 构造器调几次？ 1
+        constructor(props) {
+            super(props)
+            // 初始化状态
+            this.state = {isHot: false, wind: '微风'}
+            console.log(this)
+            // 解决了demo中this指向问题
+            this.Demo = this.demo.bind(this)  //新增了Demo 实例对象身上的方法
+        }
+        // render调几次？ 1+N 1是初始化，N是状态更新的次数
+        render() {
+            // 从状态里读东西，根据状态里的值进行展示
+            const {isHot, wind} = this.state
+            return <h2 onClick={this.Demo}>今天天气很{isHot ? '热' : '凉爽'},{wind}</h2>
+        }
+        //demo调几次？ 点几次调几次
+        demo() {
+            console.log('标题被点击了')
+            // demo放在哪里？ ——weather的原型对象上，供实例对象使用
+            // 由于demo是作为onclick的回调，所以不是通过实例调用，是直接调用
+            // 类中的方法默认开启了局部的严格模式，所以demo的this是undefined
+            // console.log(this)  //undefined
+            const isHot = this.state.isHot
+
+            // ！！！ 状态必须通过setState进行更新，且更新是一种合并，不是替换
+            this.setState({isHot: !isHot})
+            // this.state.isHot = !isHot  //err 状态state不能直接更改
+        }
+    }
+
+    ReactDOM.render(<Weather/>, document.querySelector('#demo'))
+
+
+</script>
+</body>
+</html>
